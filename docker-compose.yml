@@ -1,0 +1,55 @@
+services:
+  minecraft:
+    image: itzg/minecraft-server:latest
+    container_name: minecraft
+    restart: unless-stopped
+    ports:
+      - "25565:25565/tcp"
+    volumes:
+      - ./data:/data
+    environment:
+      EULA: "TRUE"
+      TYPE: "FABRIC"
+      # Pinned, never LATEST: a Minecraft bump breaks every mod at once.
+      # 1.21.1 is the only version where every requested Fabric mod has a
+      # release build, and it has the largest Fabric library on Modrinth
+      # (see README "Why 1.21.1").
+      VERSION: "1.21.1"
+      TZ: "America/Los_Angeles"
+
+      # --- mods (server side only; client list is in README) ---
+      # Slugs from modrinth.com/mod/<slug>. The image resolves each to the
+      # newest release for 1.21.1 + Fabric and pulls required dependencies
+      # (fabric-api, fabric-language-kotlin for veinminer).
+      MODRINTH_PROJECTS: |-
+        fabric-api
+        lithium
+        modernfix
+        appleskin
+        veinminer
+      MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
+      MODRINTH_ALLOWED_VERSION_TYPE: "release"
+
+      # --- memory ---
+      # 3G heap. Peak co-tenancy: this (~3.5G) + an Ollama 6.6G model load
+      # + the music/media stack (~3G) = ~13G of 15G, with 4G swap behind it.
+      MEMORY: "3G"
+      USE_AIKAR_FLAGS: "true"
+
+      # --- world / gameplay ---
+      MOTD: "bullet's server"
+      DIFFICULTY: "normal"
+      MAX_PLAYERS: "10"
+      # Trimmed from the 10/10 defaults: view distance is the single biggest
+      # driver of RAM and CPU on a shared box.
+      VIEW_DISTANCE: "8"
+      SIMULATION_DISTANCE: "6"
+      ONLINE_MODE: "TRUE"
+
+      # --- console access ---
+      # Password lives in .env (gitignored); RCON port is not published.
+      ENABLE_RCON: "true"
+      RCON_PASSWORD: "${RCON_PASSWORD:?set RCON_PASSWORD in .env}"
+
+      UID: "1000"
+      GID: "1000"
