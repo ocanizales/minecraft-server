@@ -11,20 +11,20 @@ services:
       EULA: "TRUE"
       TYPE: "FABRIC"
       # Pinned, never LATEST: a Minecraft bump breaks every mod at once.
-      # 1.21.1 is the only version where every requested Fabric mod has a
-      # release build, and it has the largest Fabric library on Modrinth
-      # (see README "Why 1.21.1").
-      VERSION: "1.21.1"
+      # 1.21.11 has a release build of every mod on the list and the
+      # largest Fabric library of any recent version (see README "Why 1.21.11").
+      VERSION: "1.21.11"
       TZ: "America/Los_Angeles"
 
       # --- mods (server side only; client list is in README) ---
       # Slugs from modrinth.com/mod/<slug>. The image resolves each to the
-      # newest release for 1.21.1 + Fabric and pulls required dependencies
+      # newest release for 1.21.11 + Fabric and pulls required dependencies
       # (fabric-api, fabric-language-kotlin for veinminer).
       MODRINTH_PROJECTS: |-
         fabric-api
         lithium
-        modernfix
+        chunky
+        fallingtree
         appleskin
         veinminer
       MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
