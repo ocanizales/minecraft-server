@@ -49,10 +49,14 @@ services:
       MODRINTH_ALLOWED_VERSION_TYPE: "beta"
 
       # --- memory ---
-      # 4G heap: Tensura alone is a 71 MB mod with heavy mobs and worldgen.
-      # Peak co-tenancy: this (~4.5G) + an Ollama 6.6G model load + the
-      # music/media stack (~3G) = ~14G of 15G, with 4G swap behind it.
-      MEMORY: "4G"
+      # 8G max heap (~9.5G resident with JVM overhead) out of 15G. Kept back:
+      # ~2.2G for the other services, ~2G for Claude Code working on this box,
+      # ~1.5G for the nightly seo-ops headless Chromium, plus 4G swap.
+      # The heap starts at 4G and only grows as players load the world.
+      # Local AI (Ollama's 6.6G model) was turned off on 2026-10-13 to make room.
+      # Don't re-enable it without lowering MAX_MEMORY.
+      INIT_MEMORY: "4G"
+      MAX_MEMORY: "8G"
       USE_AIKAR_FLAGS: "true"
 
       # --- world / gameplay ---
