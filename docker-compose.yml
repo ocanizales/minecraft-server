@@ -11,16 +11,19 @@ services:
       EULA: "TRUE"
       TYPE: "FABRIC"
       # Pinned, never LATEST: a Minecraft bump breaks every mod at once.
-      # 1.21.11 has a release build of every mod on the list and the
-      # largest Fabric library of any recent version (see README "Why 1.21.11").
-      VERSION: "1.21.11"
+      # 1.21.1 because Tensura: Reincarnated and all its add-ons stop there
+      # (see README "Why 1.21.1").
+      VERSION: "1.21.1"
       TZ: "America/Los_Angeles"
 
       # --- mods (server side only; client list is in README) ---
       # Slugs from modrinth.com/mod/<slug>. The image resolves each to the
-      # newest release for 1.21.11 + Fabric and pulls required dependencies
-      # (fabric-api, fabric-language-kotlin for veinminer, collective for
-      # tree-harvester).
+      # newest release for 1.21.1 + Fabric and pulls the dependencies each
+      # mod declares on Modrinth (fabric-api, fabric-language-kotlin for
+      # veinminer, collective for tree-harvester).
+      # The last five (architectury-api through manascore) are libraries
+      # Tensura's jars require but its Modrinth pages don't declare, so the
+      # resolver would never fetch them and the server would refuse to start.
       MODRINTH_PROJECTS: |-
         fabric-api
         lithium
@@ -28,13 +31,25 @@ services:
         tree-harvester
         appleskin
         veinminer
+        minecraft-comes-alive-reborn
+        tensura-reincarnated
+        tensura-mysticism
+        tensura-not-enough-bosses
+        tensura-slimethrone-extras
+        tensura-better-subordinates
+        architectury-api
+        geckolib
+        smartbrainlib
+        terrablender
+        manascore
       MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
       MODRINTH_ALLOWED_VERSION_TYPE: "release"
 
       # --- memory ---
-      # 3G heap. Peak co-tenancy: this (~3.5G) + an Ollama 6.6G model load
-      # + the music/media stack (~3G) = ~13G of 15G, with 4G swap behind it.
-      MEMORY: "3G"
+      # 4G heap: Tensura alone is a 71 MB mod with heavy mobs and worldgen.
+      # Peak co-tenancy: this (~4.5G) + an Ollama 6.6G model load + the
+      # music/media stack (~3G) = ~14G of 15G, with 4G swap behind it.
+      MEMORY: "4G"
       USE_AIKAR_FLAGS: "true"
 
       # --- world / gameplay ---
