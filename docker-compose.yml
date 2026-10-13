@@ -19,12 +19,13 @@ services:
       # --- mods (server side only; client list is in README) ---
       # Slugs from modrinth.com/mod/<slug>. The image resolves each to the
       # newest release for 1.21.11 + Fabric and pulls required dependencies
-      # (fabric-api, fabric-language-kotlin for veinminer).
+      # (fabric-api, fabric-language-kotlin for veinminer, collective for
+      # tree-harvester).
       MODRINTH_PROJECTS: |-
         fabric-api
         lithium
         chunky
-        fallingtree
+        tree-harvester
         appleskin
         veinminer
       MODRINTH_DOWNLOAD_DEPENDENCIES: "required"

@@ -25,11 +25,13 @@ These run on the server, set in `MODRINTH_PROJECTS` in `docker-compose.yml`.
 | [Fabric API](https://modrinth.com/mod/fabric-api) | Required by almost every Fabric mod |
 | [Lithium](https://modrinth.com/mod/lithium) | Server tick performance; no gameplay change |
 | [Chunky](https://modrinth.com/mod/chunky) | Pre-generates the world so exploring doesn't spike the CPU (see below) |
-| [FallingTree](https://modrinth.com/mod/fallingtree) | Break one log, the whole tree comes down |
+| [Tree Harvester](https://modrinth.com/mod/tree-harvester) | Chop one log with an axe and the whole tree (or huge mushroom) comes down, with fast leaf decay and sapling replanting |
 | [AppleSkin](https://modrinth.com/mod/appleskin) | Sends real saturation values to clients so the HUD is accurate |
 | [VeinMiner](https://modrinth.com/mod/veinminer) | The vein-mining itself happens on the server |
 
-Pulled in automatically: [Fabric Language Kotlin](https://modrinth.com/mod/fabric-language-kotlin) (VeinMiner).
+Pulled in automatically: [Fabric Language Kotlin](https://modrinth.com/mod/fabric-language-kotlin) (VeinMiner)
+and [Collective](https://modrinth.com/mod/collective) (Tree Harvester; a shared code library for
+Serilum's mods that adds nothing on its own).
 
 ## Client mods
 
@@ -55,10 +57,11 @@ server and do not need to match anyone else's.
 | [Xaero's Minimap](https://modrinth.com/mod/xaeros-minimap) | No | |
 | [Xaero's World Map](https://modrinth.com/mod/xaeros-world-map) | No | |
 | [Just Enough Items](https://modrinth.com/mod/jei) | No | Recipe viewer |
-| [FallingTree](https://modrinth.com/mod/fallingtree) | No | Optional; only adds client-side settings |
+| [Spatial GUI](https://modrinth.com/mod/spatial-gui) | No | Draws inventory and container screens as a 3D panel instead of a flat overlay; needs Mod Menu + Cloth Config |
 
-Dependencies the Modrinth App adds for you: Cloth Config (Falling Leaves),
-Placeholder API (Mod Menu), Fabric Language Kotlin (VeinMiner).
+Dependencies the Modrinth App adds for you: Cloth Config (Falling Leaves,
+Spatial GUI), Placeholder API (Mod Menu), Fabric Language Kotlin (VeinMiner).
+Tree Harvester is server-only, so players don't install it.
 
 ## Why 1.21.11
 
@@ -91,8 +94,8 @@ release, which gets far more mod support than the newer 26.x versions.
   `docker exec minecraft rcon-cli chunky radius 2000` and then
   `docker exec minecraft rcon-cli chunky start`. It can be paused and resumed,
   and the size can be changed.
-- **FallingTree + VeinMiner:** VeinMiner can also break whole veins of logs.
-  If both would trigger on the same tree, turn logs off in one of them.
+- **Tree Harvester + VeinMiner:** VeinMiner can also break whole veins of
+  logs. If both would trigger on the same tree, turn logs off in VeinMiner.
 - **Eclipse shaders:** it's a single beta release, listed for 1.21.5–1.21.8
   only. Shader packs often keep working across versions under Iris, but that
   hasn't been tested on 1.21.11. If it doesn't work,
@@ -119,9 +122,16 @@ Server:
 
 Client:
 
-- [Entity Culling](https://modrinth.com/mod/entityculling) and
-  [Dynamic FPS](https://modrinth.com/mod/dynamic-fps): more performance, and
-  they pair well with Sodium.
+- [Entity Culling](https://modrinth.com/mod/entityculling): skips drawing
+  mobs and block entities you can't see; pairs well with Sodium.
+- [Dynamic FPS](https://modrinth.com/mod/dynamic-fps): lowers the frame
+  rate and volume when Minecraft is in the background, idle or on battery.
+  Saves GPU, heat and laptop battery; does nothing for in-game FPS or the
+  server.
+- [Visuality](https://modrinth.com/mod/visuality): extra cosmetic particles
+  (hit particles, slime blobs, crystal sparkles, ambient effects).
+  Overlaps in spirit with Particle Rain and Falling Leaves but not in what
+  it adds.
 - [Sodium Extra](https://modrinth.com/mod/sodium-extra) and
   [Reese's Sodium Options](https://modrinth.com/mod/reeses-sodium-options):
   more video settings.
