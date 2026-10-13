@@ -12,12 +12,18 @@ which downloads the server mods itself on start.
 
 ## Joining
 
+[![Download the player profile](https://img.shields.io/badge/Modrinth_App-Download_player_profile-1bd96a?style=for-the-badge&logo=modrinth&logoColor=white)](https://github.com/ocanizales/minecraft-server/releases/latest/download/bullets-server.mrpack)
+
 1. Install the [Modrinth App](https://modrinth.com/app).
-2. Create a profile: **Fabric**, **1.21.1**.
-3. Add every mod in [Client mods](#client-mods) below, **including the
-   Tensura libraries**. The Modrinth App adds most dependencies for you, but
-   not Tensura's (see [Tensura libraries](#tensura-libraries)).
+2. Click the button above. It downloads `bullets-server.mrpack`, a ready-made
+   Fabric 1.21.1 profile with every mod below, already at the exact versions
+   the server runs.
+3. Open the file. Double-clicking it opens it in the Modrinth App, or use
+   **+ → Import from file** in the app.
 4. Play → Multiplayer → add the server address.
+
+When the mod list changes, a new profile is released at the same link.
+Download it again and import it to update.
 
 ## Server mods
 
@@ -45,21 +51,16 @@ Serilum's mods that adds nothing on its own).
 
 ## Tensura libraries
 
-Tensura's mod files require these libraries, but its Modrinth pages don't
-list them, so neither the server nor the Modrinth App adds them on its own.
-Without them the game refuses to start. **Install all five yourself:**
-
-- [Architectury API](https://modrinth.com/mod/architectury-api)
-- [GeckoLib](https://modrinth.com/mod/geckolib)
-- [SmartBrainLib](https://modrinth.com/mod/smartbrainlib) (its page says
-  "server only", but Tensura needs it on the client too)
-- [TerraBlender](https://modrinth.com/mod/terrablender)
-- [ManasCore](https://modrinth.com/mod/manascore)
+Tensura's mod files require Architectury API, GeckoLib, SmartBrainLib,
+TerraBlender and ManasCore, but its Modrinth pages don't list them, so
+neither the server nor the Modrinth App would add them on their own. Without
+them the game refuses to start. The player profile and the server both
+include all five.
 
 ## Client mods
 
-Install these in your Modrinth App profile, plus the five libraries above.
-Client-only mods are not on the server and do not need to match anyone else's.
+All of these are in the player profile. Client-only mods are not on the
+server.
 
 | Mod | Needed to join? | Notes |
 | --- | --- | --- |
@@ -74,7 +75,7 @@ Client-only mods are not on the server and do not need to match anyone else's.
 | [VeinMiner Hotkey](https://modrinth.com/mod/veinminer-client) | **Yes** | Hold a key to vein-mine; needs VeinMiner + Fabric Language Kotlin |
 | [Tensura Voice](https://modrinth.com/mod/tensura-voice) | No | Voice of the World animations and sounds |
 | [Sodium](https://modrinth.com/mod/sodium) | No | Rendering performance |
-| [Iris](https://modrinth.com/mod/iris) | No | Shader loader. **Pick version 1.8.14-beta.1**, see notes |
+| [Iris](https://modrinth.com/mod/iris) | No | Shader loader, pinned to 1.8.14-beta.1 (see notes) |
 | [Eclipse](https://modrinth.com/shader/eclipseshaders) | No | Shader pack, see notes below |
 | [Lithium](https://modrinth.com/mod/lithium) | No | Helps singleplayer; harmless on a server |
 | [ImmediatelyFast](https://modrinth.com/mod/immediatelyfast) | No | HUD/text rendering performance |
@@ -91,9 +92,9 @@ Client-only mods are not on the server and do not need to match anyone else's.
 | [Visuality](https://modrinth.com/mod/visuality) | No | Extra particles: mob hits, slime blobs, crystal sparkles, ambient effects; needs Cloth Config |
 | [Spatial GUI](https://modrinth.com/mod/spatial-gui) | No | Draws inventory and container screens as a 3D panel instead of a flat overlay; needs Mod Menu + Cloth Config |
 
-Dependencies the Modrinth App adds for you: Cloth Config (Falling Leaves,
-Visuality, Spatial GUI), Placeholder API (Mod Menu), Fabric Language Kotlin (VeinMiner).
-Tree Harvester is server-only, so players don't install it.
+Also in the profile as dependencies: Cloth Config (Falling Leaves,
+Visuality, Spatial GUI), Placeholder API (Mod Menu), Fabric Language Kotlin
+(VeinMiner) and the five Tensura libraries.
 
 ## Why 1.21.1
 
@@ -129,8 +130,10 @@ are **NeoForge-only**, so they can't run on this Fabric server:
 
 - **Iris and Sodium:** the newest Sodium for 1.21.1 (0.8.13) refuses to load
   with Iris older than 1.8.13, and the newest *release* of Iris for 1.21.1 is
-  1.8.8. Install **Iris 1.8.14-beta.1**, the pairing the TenSura modpack
-  itself ships. In the Modrinth App, open Iris's versions and pick it by hand.
+  1.8.8. The profile pins **Iris 1.8.14-beta.1**, the pairing the TenSura
+  modpack itself ships.
+- **TerraBlender** has only ever published 1.21.1 builds marked beta, so it's
+  pinned to 4.1.0.8 and the server allows beta versions.
 - **Chunky:** it does nothing until it's told to. After the first start,
   run it once from the console, for example
   `docker exec minecraft rcon-cli chunky radius 2000` and then
@@ -139,7 +142,8 @@ are **NeoForge-only**, so they can't run on this Fabric server:
 - **Tree Harvester + VeinMiner:** VeinMiner can also break whole veins of
   logs. If both would trigger on the same tree, turn logs off in VeinMiner.
 - **Eclipse shaders:** it's a single beta release, listed for 1.21.5–1.21.8
-  only. Shader packs often keep working across versions under Iris, but that
+  only. It's in the profile's shader packs folder anyway; turn it on under
+  Video Settings → Shader Packs. Shader packs often keep working across versions under Iris, but that
   hasn't been tested on 1.21.1. If it doesn't work,
   [Complementary Reimagined](https://modrinth.com/shader/complementary-reimagined)
   and [BSL](https://modrinth.com/shader/bsl-shaders) both support 1.21.1.
@@ -154,10 +158,6 @@ are **NeoForge-only**, so they can't run on this Fabric server:
 
 Server:
 
-- [Serene Seasons](https://modrinth.com/mod/serene-seasons): real seasons.
-  Grass and leaves change color, it snows in winter, and crops only grow in
-  their seasons, which makes farming much harder. It's in the TenSura pack
-  and has a Fabric 1.21.1 build. Needed on both server and client.
 - [spark](https://modrinth.com/mod/spark): profiler for finding lag.
 - [FerriteCore](https://modrinth.com/mod/ferrite-core): lower memory use;
   works on both server and client.
@@ -188,10 +188,26 @@ docker compose logs -f      # watch it start up
 docker compose down         # stop
 ```
 
-**To add a server mod:** add its Modrinth slug (the part after
-`modrinth.com/mod/`) to `MODRINTH_PROJECTS`, run `docker compose up -d`, and
-add the mod to the tables above. Check that the mod file's own dependencies
-are covered, not just the ones on its Modrinth page. Tensura is the example
-of why.
+## Changing the mod list
+
+`pack/mods.toml` is the only list. Each mod is marked `both`, `server` or
+`client`, and can pin a version. After editing it:
+
+```sh
+python3 pack/build.py 2026.10.13     # pack version, usually today's date
+```
+
+This resolves every mod and its dependencies against Modrinth, checks each
+mod file's own `depends` (not just what its Modrinth page claims; Tensura is
+why), rewrites the pinned `MODRINTH_PROJECTS` block in `docker-compose.yml`,
+and builds `dist/bullets-server.mrpack`. Then commit, push, and publish the
+profile:
+
+```sh
+gh release create pack-2026.10.13 dist/bullets-server.mrpack --title "Player profile 2026.10.13"
+```
+
+The download button always points at the newest release, so the asset name
+must stay `bullets-server.mrpack`.
 
 `data/` holds the world and runtime files and is not committed.

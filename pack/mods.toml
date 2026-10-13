@@ -1,0 +1,67 @@
+# The single list of mods for the server and the player profile.
+# `python3 pack/build.py <version>` resolves these against Modrinth, pins the
+# server in docker-compose.yml, and builds dist/bullets-server.mrpack.
+#
+# side: "both"   = on the server and in the player profile
+#       "server" = server only
+#       "client" = player profile only
+# version: optional Modrinth version number to pin; default is the newest
+#          release for this Minecraft version.
+# minecraft: optional; look the version up under another Minecraft version
+#          (for a shader pack that isn't listed for ours).
+# Dependencies a mod declares on Modrinth are added automatically.
+
+minecraft = "1.21.1"
+fabric_loader = "0.19.5"
+
+[mods]
+fabric-api = "both"
+
+# --- main gameplay: Tensura (from Kesselot's TenSura modpack) ---
+tensura-reincarnated = "both"
+tensura-mysticism = "both"
+tensura-not-enough-bosses = "both"
+tensura-slimethrone-extras = "both"
+tensura-better-subordinates = "both"
+tensura-voice = "client"
+# Tensura's jars require these but its Modrinth pages don't declare them.
+# SmartBrainLib's page says server-only; Tensura needs it on the client too.
+architectury-api = "both"
+geckolib = "both"
+smartbrainlib = "both"
+# TerraBlender only publishes 1.21.1 builds as "beta".
+terrablender = { side = "both", version = "4.1.0.8" }
+manascore = "both"
+
+minecraft-comes-alive-reborn = "both"
+
+# --- gameplay ---
+veinminer = "both"
+veinminer-client = "client"
+tree-harvester = "server"
+appleskin = "both"
+chunky = "server"
+
+# --- performance ---
+lithium = "both"
+sodium = "client"
+immediatelyfast = "client"
+dynamic-fps = "client"
+
+# --- visuals and UI ---
+# Sodium 0.8.13 breaks Iris < 1.8.13 and the newest Iris release for 1.21.1 is
+# 1.8.8, so pin the beta the TenSura modpack ships.
+iris = { side = "client", version = "1.8.14-beta.1+1.21.1-fabric" }
+# Eclipse's only build is a beta listed for 1.21.5-1.21.8. Shader packs
+# aren't tied to the game version like mods are, but it is untested on 1.21.1.
+eclipseshaders = { side = "client", version = "1.0", minecraft = "1.21.8" }
+modmenu = "client"
+fallingleaves = "client"
+particle-rain = "client"
+not-enough-animations = "client"
+afk-cinematics = "client"
+visuality = "client"
+spatial-gui = "client"
+xaeros-minimap = "client"
+xaeros-world-map = "client"
+jei = "client"
