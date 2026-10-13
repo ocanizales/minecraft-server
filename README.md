@@ -57,10 +57,12 @@ server and do not need to match anyone else's.
 | [Xaero's Minimap](https://modrinth.com/mod/xaeros-minimap) | No | |
 | [Xaero's World Map](https://modrinth.com/mod/xaeros-world-map) | No | |
 | [Just Enough Items](https://modrinth.com/mod/jei) | No | Recipe viewer |
+| [Dynamic FPS](https://modrinth.com/mod/dynamic-fps) | No | Lowers frame rate and volume when the game is in the background, idle or on battery |
+| [Visuality](https://modrinth.com/mod/visuality) | No | Extra particles: mob hits, slime blobs, crystal sparkles, ambient effects; needs Cloth Config |
 | [Spatial GUI](https://modrinth.com/mod/spatial-gui) | No | Draws inventory and container screens as a 3D panel instead of a flat overlay; needs Mod Menu + Cloth Config |
 
 Dependencies the Modrinth App adds for you: Cloth Config (Falling Leaves,
-Spatial GUI), Placeholder API (Mod Menu), Fabric Language Kotlin (VeinMiner).
+Visuality, Spatial GUI), Placeholder API (Mod Menu), Fabric Language Kotlin (VeinMiner).
 Tree Harvester is server-only, so players don't install it.
 
 ## Why 1.21.11
@@ -124,14 +126,6 @@ Client:
 
 - [Entity Culling](https://modrinth.com/mod/entityculling): skips drawing
   mobs and block entities you can't see; pairs well with Sodium.
-- [Dynamic FPS](https://modrinth.com/mod/dynamic-fps): lowers the frame
-  rate and volume when Minecraft is in the background, idle or on battery.
-  Saves GPU, heat and laptop battery; does nothing for in-game FPS or the
-  server.
-- [Visuality](https://modrinth.com/mod/visuality): extra cosmetic particles
-  (hit particles, slime blobs, crystal sparkles, ambient effects).
-  Overlaps in spirit with Particle Rain and Falling Leaves but not in what
-  it adds.
 - [Sodium Extra](https://modrinth.com/mod/sodium-extra) and
   [Reese's Sodium Options](https://modrinth.com/mod/reeses-sodium-options):
   more video settings.
