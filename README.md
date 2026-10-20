@@ -43,6 +43,13 @@ These run on the server, set in `MODRINTH_PROJECTS` in `docker-compose.yml`.
 | [Tree Harvester](https://modrinth.com/mod/tree-harvester) | Chop one log with an axe and the whole tree (or huge mushroom) comes down, with fast leaf decay and sapling replanting |
 | [AppleSkin](https://modrinth.com/mod/appleskin) | Sends real saturation values to clients so the HUD is accurate |
 | [VeinMiner](https://modrinth.com/mod/veinminer) | The vein-mining itself happens on the server |
+| [Call Your Horse](https://modrinth.com/mod/call-your-horse) | Blow a goat horn to whistle your horse over to you |
+| [Clumps](https://modrinth.com/mod/ly-clumps) | Merges nearby experience orbs into one and picks them up instantly, which also cuts lag |
+| [Day Counter](https://modrinth.com/mod/daycounter) | Shows the current day above the hotbar |
+| [Spawn Animations](https://modrinth.com/mod/spawn-animations) | Hostile mobs dig out of the ground or poof into existence when they spawn |
+
+Call Your Horse, Clumps, Day Counter and Spawn Animations are datapacks
+packaged as mods, so players don't need them installed.
 
 Also listed in compose: the five [Tensura libraries](#tensura-libraries).
 Pulled in automatically: [Fabric Language Kotlin](https://modrinth.com/mod/fabric-language-kotlin) (VeinMiner)
@@ -77,6 +84,8 @@ server.
 | [Sodium](https://modrinth.com/mod/sodium) | No | Rendering performance |
 | [Iris](https://modrinth.com/mod/iris) | No | Shader loader, pinned to 1.8.14-beta.1 (see notes) |
 | [Eclipse](https://modrinth.com/shader/eclipseshaders) | No | Shader pack, see notes below |
+| [Complementary Reimagined](https://modrinth.com/shader/complementary-reimagined) | No | Shader pack: close to vanilla look, good performance |
+| [Photon](https://modrinth.com/shader/photon-shader) | No | Shader pack: semi-realistic lighting and clouds; heavier |
 | [Lithium](https://modrinth.com/mod/lithium) | No | Helps singleplayer; harmless on a server |
 | [ImmediatelyFast](https://modrinth.com/mod/immediatelyfast) | No | HUD/text rendering performance |
 | [Mod Menu](https://modrinth.com/mod/modmenu) | No | Mod list + config screens |
@@ -93,8 +102,8 @@ server.
 | [Spatial GUI](https://modrinth.com/mod/spatial-gui) | No | Draws inventory and container screens as a 3D panel instead of a flat overlay; needs Mod Menu + Cloth Config |
 
 Also in the profile as dependencies: Cloth Config (Falling Leaves,
-Visuality, Spatial GUI), Placeholder API (Mod Menu), Fabric Language Kotlin
-(VeinMiner) and the five Tensura libraries.
+Visuality, Spatial GUI), YACL (Spatial GUI), Placeholder API (Mod Menu),
+Fabric Language Kotlin (VeinMiner) and the five Tensura libraries.
 
 ## Why 1.21.1
 
@@ -125,6 +134,11 @@ are **NeoForge-only**, so they can't run on this Fabric server:
   which adds search to the controls screen.
 - **ModernFix:** dropped. It was built for large Forge modpacks and does
   little for a Fabric pack.
+- **Voxy:** its first build is for 1.21.9. Nothing for 1.21.1.
+- **Euphoria (modpack):** only made for 26.1.2, and a modpack can't go
+  inside another modpack anyway. The shader add-on
+  [Euphoria Patches](https://modrinth.com/mod/euphoria-patches) does support
+  1.21.1 (see recommendations).
 
 ## Notes on the list
 
@@ -141,13 +155,18 @@ are **NeoForge-only**, so they can't run on this Fabric server:
   and the size can be changed.
 - **Tree Harvester + VeinMiner:** VeinMiner can also break whole veins of
   logs. If both would trigger on the same tree, turn logs off in VeinMiner.
-- **Eclipse shaders:** it's a single beta release, listed for 1.21.5–1.21.8
-  only. It's in the profile's shader packs folder anyway; turn it on under
-  Video Settings → Shader Packs. Shader packs often keep working across versions under Iris, but that
-  hasn't been tested on 1.21.1. If it doesn't work,
-  [Complementary Reimagined](https://modrinth.com/shader/complementary-reimagined)
-  and [BSL](https://modrinth.com/shader/bsl-shaders) both support 1.21.1.
-  Shaders are the heaviest item on this list for a player's GPU.
+- **Shader packs:** the profile has three, Eclipse, Complementary Reimagined
+  and Photon. Pick one under Video Settings → Shader Packs; only one runs at a
+  time. Eclipse is a single beta listed for 1.21.5–1.21.8 only and hasn't
+  been tested on 1.21.1; the other two support 1.21.1. Shaders are the
+  heaviest item on this list for a player's GPU.
+- **JEI** is pinned to 19.51.0.418. Newer builds require mezz's config
+  library, which only has beta releases.
+- **Spawn Animations:** Modrinth lists Quilt's QSL as a requirement, but the
+  Fabric jar doesn't need it, so `pack/mods.toml` skips it (`skip_deps`).
+  The server log shows a few "Failed to load function
+  spawnanimations:internal/entity/ehs/pehkui/..." errors on start; those are
+  its hooks for the Pehkui mod, which isn't installed, and are harmless.
 - **Cinematic AFK:** two similar mods exist, [AFK Cinematics](https://modrinth.com/mod/afk-cinematics)
   (listed above) and [Ji AFK Cinematic](https://modrinth.com/mod/ji-afk-cinematic).
   Use one, not both.
@@ -168,6 +187,8 @@ Server:
 
 Client:
 
+- [Euphoria Patches](https://modrinth.com/mod/euphoria-patches): add-on for
+  Complementary Reimagined with extra optional effects.
 - [Entity Culling](https://modrinth.com/mod/entityculling): skips drawing
   mobs and block entities you can't see; pairs well with Sodium.
 - [Sodium Extra](https://modrinth.com/mod/sodium-extra) and
@@ -194,7 +215,7 @@ docker compose down         # stop
 `client`, and can pin a version. After editing it:
 
 ```sh
-python3 pack/build.py 2026.10.13     # pack version, usually today's date
+python3 pack/build.py 2026.10.20     # pack version, usually today's date
 ```
 
 This resolves every mod and its dependencies against Modrinth, checks each
@@ -204,7 +225,7 @@ and builds `dist/bullets-server.mrpack`. Then commit, push, and publish the
 profile:
 
 ```sh
-gh release create pack-2026.10.13 dist/bullets-server.mrpack --title "Player profile 2026.10.13"
+gh release create pack-2026.10.20 dist/bullets-server.mrpack --title "Player profile 2026.10.20"
 ```
 
 The download button always points at the newest release, so the asset name

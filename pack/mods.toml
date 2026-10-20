@@ -9,6 +9,8 @@
 #          release for this Minecraft version.
 # minecraft: optional; look the version up under another Minecraft version
 #          (for a shader pack that isn't listed for ours).
+# skip_deps: optional; Modrinth dependencies to ignore because the Fabric jar
+#          doesn't need them (the jar's own depends are still checked).
 # Dependencies a mod declares on Modrinth are added automatically.
 
 minecraft = "1.21.1"
@@ -41,6 +43,13 @@ veinminer-client = "client"
 tree-harvester = "server"
 appleskin = "both"
 chunky = "server"
+# These four are datapacks packaged as mods: server-side only, players need nothing.
+call-your-horse = "server"
+ly-clumps = "server"
+daycounter = "server"
+# One multi-loader jar; Modrinth lists Quilt's QSL as required, but the Fabric
+# side of the jar depends on nothing.
+spawn-animations = { side = "server", skip_deps = ["qsl"] }
 
 # --- performance ---
 lithium = "both"
@@ -55,6 +64,8 @@ iris = { side = "client", version = "1.8.14-beta.1+1.21.1-fabric" }
 # Eclipse's only build is a beta listed for 1.21.5-1.21.8. Shader packs
 # aren't tied to the game version like mods are, but it is untested on 1.21.1.
 eclipseshaders = { side = "client", version = "1.0", minecraft = "1.21.8" }
+complementary-reimagined = "client"
+photon-shader = "client"
 modmenu = "client"
 fallingleaves = "client"
 particle-rain = "client"
@@ -64,4 +75,6 @@ visuality = "client"
 spatial-gui = "client"
 xaeros-minimap = "client"
 xaeros-world-map = "client"
-jei = "client"
+# JEI 19.64+ requires mezz's config library, which is beta-only; stay on the
+# build players already had.
+jei = { side = "client", version = "19.51.0.418" }

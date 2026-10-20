@@ -26,22 +26,26 @@ services:
       MODRINTH_PROJECTS: |-
         appleskin:b5ZiCjAr
         architectury-api:Pzc2FP5K
+        call-your-horse:8McTlamo
         chunky:RVFHfo1D
-        collective:jSut2GCG
+        collective:ZQoHzz96
+        daycounter:sP06daYC
         fabric-api:Mys3P7lK
         fabric-language-kotlin:SKW1BTL3
         geckolib:tmxM7U4W
         lithium:N08Z8wog
+        ly-clumps:tYb6vZfE
         manascore:SmuyLaPd
         minecraft-comes-alive-reborn:eUYBilCG
         smartbrainlib:87gX12Yj
+        spawn-animations:xFTfXEwk
         tensura-better-subordinates:hwjrE2VG
         tensura-mysticism:3NYcVNlG
         tensura-not-enough-bosses:x1zTOsKr
         tensura-reincarnated:YQ5c2eA3
         tensura-slimethrone-extras:RvX4wPMr
         terrablender:XNtIBXyQ
-        tree-harvester:oIQOQyG6
+        tree-harvester:ejhqrWH2
         veinminer:XJrQXP5u
       MODRINTH_DOWNLOAD_DEPENDENCIES: "none"
       # Every line is pinned, but TerraBlender's only 1.21.1 builds are

@@ -88,6 +88,8 @@ def resolve(cfg):
         spec = {"side": spec} if isinstance(spec, str) else spec
         wanted[slug] = spec
 
+    skip = {slug: {get(f"{API}/project/{d}")["id"] for d in spec.get("skip_deps", [])} for slug, spec in wanted.items()}
+
     resolved = {}  # project id -> entry
     queue = [(slug, spec["side"], spec.get("version"), spec.get("minecraft", mc)) for slug, spec in wanted.items()]
     while queue:
@@ -105,7 +107,8 @@ def resolve(cfg):
             "sides": {side},
         }
         for dep in version["dependencies"]:
-            if dep["dependency_type"] == "required" and dep.get("project_id"):
+            pid = dep.get("project_id")
+            if dep["dependency_type"] == "required" and pid and pid not in skip.get(slug, ()):
                 queue.append((dep["project_id"], side, None, mc))
 
     # Sides propagate to dependencies only one level per pass; repeat until stable.
