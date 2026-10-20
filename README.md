@@ -99,6 +99,7 @@ server.
 | [Just Enough Items](https://modrinth.com/mod/jei) | No | Recipe viewer |
 | [Dynamic FPS](https://modrinth.com/mod/dynamic-fps) | No | Lowers frame rate and volume when the game is in the background, idle or on battery |
 | [Visuality](https://modrinth.com/mod/visuality) | No | Extra particles: mob hits, slime blobs, crystal sparkles, ambient effects; needs Cloth Config |
+| [LambDynamicLights](https://modrinth.com/mod/lambdynamiclights) | No | Torches and other light sources light up the area while held or dropped |
 | [Spatial GUI](https://modrinth.com/mod/spatial-gui) | No | Draws inventory and container screens as a 3D panel instead of a flat overlay; needs Mod Menu + Cloth Config |
 
 Also in the profile as dependencies: Cloth Config (Falling Leaves,
