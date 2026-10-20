@@ -37,6 +37,7 @@ services:
         ly-clumps:tYb6vZfE
         manascore:SmuyLaPd
         minecraft-comes-alive-reborn:eUYBilCG
+        polymer:xqZ9fctS
         servercore:GQ2a51Rl
         smartbrainlib:87gX12Yj
         spawn-animations:xFTfXEwk
@@ -47,6 +48,7 @@ services:
         tensura-slimethrone-extras:RvX4wPMr
         terrablender:XNtIBXyQ
         tree-harvester:ejhqrWH2
+        universal-graves:Fg64B87Y
         veinminer:XJrQXP5u
       # Server mods that aren't on Modrinth ([external] in mods.toml), by URL.
       # When one is updated, delete its old jar from data/mods by hand.

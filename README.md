@@ -41,6 +41,7 @@ These run on the server, set in `MODRINTH_PROJECTS` in `docker-compose.yml`.
 | [Lithium](https://modrinth.com/mod/lithium) | Server tick performance; no gameplay change |
 | [ServerCore](https://modrinth.com/mod/servercore) | Server optimizations: lowers view distance under load, slows ticking of far-away mobs, cheaper chunk ticks |
 | [FTB Quests](https://www.curseforge.com/minecraft/mc-mods/ftb-quests-fabric) | Quest book. Comes empty; quests are written in-game by an op. Needs FTB Library and FTB Teams. CurseForge only |
+| [Universal Graves](https://modrinth.com/mod/universal-graves) | When you die your items go into a protected grave at the spot instead of spilling. Server-only (pulls in Polymer), nothing to install |
 | [Chunky](https://modrinth.com/mod/chunky) | Pre-generates the world so exploring doesn't spike the CPU (see below) |
 | [Tree Harvester](https://modrinth.com/mod/tree-harvester) | Chop one log with an axe and the whole tree (or huge mushroom) comes down, with fast leaf decay and sapling replanting |
 | [AppleSkin](https://modrinth.com/mod/appleskin) | Sends real saturation values to clients so the HUD is accurate |
@@ -213,6 +214,11 @@ are **NeoForge-only**, so they can't run on this Fabric server:
 - **ServerCore:** can lower view distance and slow far-away mobs when the
   server is busy. If Tensura mobs or MCA villagers act frozen at a distance,
   raise the activation ranges in `data/config/servercore/`.
+- **Universal Graves + Better Inventory:** Better Inventory drops its own
+  tab and loadout items through its own death code, so those may land on
+  the ground next to the grave instead of inside it. Pick them up quickly
+  (dropped items vanish after 5 minutes). Grave settings live in
+  `data/config/universal-graves/`.
 - **Camera Overhaul** tilts the camera when strafing and turning. If that
   feels like it fights your movement: Mods → Camera Overhaul → set
   Strafing Roll Factor (and Mouselook Roll) to 0, or untick Enable.

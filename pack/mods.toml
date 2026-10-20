@@ -54,6 +54,8 @@ chunky = "server"
 # Server optimizations (dynamic view distance under load, entity activation
 # ranges, lower chunk tick cost). Tune in data/config/servercore/.
 servercore = "server"
+# Graves hold your items when you die; server-only (players see it as vanilla).
+universal-graves = "server"
 # Quest book add-on (animations, QoL). Needs FTB Quests, under [external].
 certain-questing-additions = "client"
 # These four are datapacks packaged as mods: server-side only, players need nothing.
