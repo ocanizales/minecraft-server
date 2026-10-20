@@ -27,7 +27,11 @@
         "name": "Stone",
         "blocks": [
             "minecraft:stone",
-            "minecraft:deepslate"
+            "minecraft:deepslate",
+            "minecraft:granite",
+            "minecraft:diorite",
+            "minecraft:andesite",
+            "minecraft:tuff"
         ],
         "tools": [
             "#minecraft:pickaxes"

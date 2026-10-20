@@ -185,7 +185,7 @@ are **NeoForge-only**, so they can't run on this Fabric server:
 - **VeinMiner groups** (`pack/server-config/veinminer-groups.json`, live copy
   in `data/config/Veinminer/groups.json`, apply with
   `docker exec minecraft rcon-cli "veinminer reload"`): ores plus
-  glowstone, amethyst and obsidian with a pickaxe; stone and deepslate
+  glowstone, amethyst and obsidian with a pickaxe; stone, deepslate, granite, diorite, andesite and tuff
   with a pickaxe (their own group, so a stone vein never runs into ores); gravel, sand, clay, mud,
   soul sand/soil and snow with a shovel; leaves, wart blocks and
   shroomlight with a hoe. Logs are left to Tree Harvester. Hold the
