@@ -37,6 +37,7 @@ services:
         ly-clumps:tYb6vZfE
         manascore:SmuyLaPd
         minecraft-comes-alive-reborn:eUYBilCG
+        servercore:GQ2a51Rl
         smartbrainlib:87gX12Yj
         spawn-animations:xFTfXEwk
         tensura-better-subordinates:hwjrE2VG
@@ -50,6 +51,9 @@ services:
       # Server mods that aren't on Modrinth ([external] in mods.toml), by URL.
       # When one is updated, delete its old jar from data/mods by hand.
       MODS: |-
+        https://mediafilez.forgecdn.net/files/8724/781/ftb-teams-fabric-2101.1.11.jar
+        https://mediafilez.forgecdn.net/files/8885/16/ftb-quests-fabric-2101.1.36.jar
+        https://mediafilez.forgecdn.net/files/9008/90/ftb-library-fabric-2101.1.37.jar
         https://mediafilez.forgecdn.net/files/9185/436/betterinventory-fabric-1.21.1-1.5.0.jar
       MODRINTH_DOWNLOAD_DEPENDENCIES: "none"
       # Every line is pinned, but TerraBlender's only 1.21.1 builds are

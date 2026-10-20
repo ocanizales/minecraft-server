@@ -39,6 +39,8 @@ These run on the server, set in `MODRINTH_PROJECTS` in `docker-compose.yml`.
 | [Tensura: Better Subordinates](https://modrinth.com/mod/tensura-better-subordinates) | Add-on: train subordinates and teach them skills |
 | [MCA Reborn](https://modrinth.com/mod/minecraft-comes-alive-reborn) | Villager overhaul: real villagers you can talk to, befriend and marry |
 | [Lithium](https://modrinth.com/mod/lithium) | Server tick performance; no gameplay change |
+| [ServerCore](https://modrinth.com/mod/servercore) | Server optimizations: lowers view distance under load, slows ticking of far-away mobs, cheaper chunk ticks |
+| [FTB Quests](https://www.curseforge.com/minecraft/mc-mods/ftb-quests-fabric) | Quest book. Comes empty; quests are written in-game by an op. Needs FTB Library and FTB Teams. CurseForge only |
 | [Chunky](https://modrinth.com/mod/chunky) | Pre-generates the world so exploring doesn't spike the CPU (see below) |
 | [Tree Harvester](https://modrinth.com/mod/tree-harvester) | Chop one log with an axe and the whole tree (or huge mushroom) comes down, with fast leaf decay and sapling replanting |
 | [AppleSkin](https://modrinth.com/mod/appleskin) | Sends real saturation values to clients so the HUD is accurate |
@@ -81,6 +83,8 @@ server.
 | [MCA Reborn](https://modrinth.com/mod/minecraft-comes-alive-reborn) | **Yes** | |
 | [VeinMiner](https://modrinth.com/mod/veinminer) | **Yes** | Must match the server |
 | [Better Inventory and Backpacks](https://www.curseforge.com/minecraft/mc-mods/better-inventory-and-backpacks) | **Yes** | Must match the server |
+| [FTB Quests](https://www.curseforge.com/minecraft/mc-mods/ftb-quests-fabric) + [FTB Library](https://www.curseforge.com/minecraft/mc-mods/ftb-library-fabric) + [FTB Teams](https://www.curseforge.com/minecraft/mc-mods/ftb-teams-fabric) | **Yes** | Must match the server |
+| [Certain Questing Additions](https://modrinth.com/mod/certain-questing-additions) | No | Animations and QoL for the FTB Quests book |
 | [VeinMiner Hotkey](https://modrinth.com/mod/veinminer-client) | **Yes** | Hold a key to vein-mine; needs VeinMiner + Fabric Language Kotlin |
 | [Tensura Voice](https://modrinth.com/mod/tensura-voice) | No | Voice of the World animations and sounds |
 | [Sodium](https://modrinth.com/mod/sodium) | No | Rendering performance |
@@ -140,6 +144,12 @@ are **NeoForge-only**, so they can't run on this Fabric server:
   little for a Fabric pack.
 - **Spatial GUI:** removed 2026-10-20; bullet didn't like the 3D inventory
   screens.
+- **Create Questing:** only made for 1.20.1 and older.
+- **Global Server Config:** Forge only, and it solves a Forge problem
+  (per-world `serverconfig` folders) that Fabric doesn't have.
+- **Fresh & Smooth (modpack):** no 1.21.1 build. Its mods are listed under
+  recommendations instead; adding all ~90 untested would be asking for a
+  crash.
 - **Voxy:** its first build is for 1.21.9. Nothing for 1.21.1.
 - **Euphoria (modpack):** only made for 26.1.2, and a modpack can't go
   inside another modpack anyway. The shader add-on
@@ -182,6 +192,13 @@ are **NeoForge-only**, so they can't run on this Fabric server:
   CurseForge's own download link. It changes how item stacks are saved, so
   removing it later can shrink or lose items in backpacks; the world was
   backed up before it was added.
+- **FTB Quests** and its two libraries are CurseForge only (All Rights
+  Reserved), handled the same way as Better Inventory. The quest book starts
+  empty: an op opens it and turns on edit mode to write chapters and quests.
+  They're saved in `data/config/ftbquests/`.
+- **ServerCore:** can lower view distance and slow far-away mobs when the
+  server is busy. If Tensura mobs or MCA villagers act frozen at a distance,
+  raise the activation ranges in `data/config/servercore/`.
 - **Immersive Interfaces** is a beta resource pack (0.8.2) that covers
   1.21.1 through built-in overlays. It retextures vanilla screens, so Better
   Inventory's own inventory screen may not match it.

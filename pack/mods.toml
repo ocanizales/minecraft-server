@@ -47,6 +47,11 @@ tree-harvester = "server"
 appleskin = "both"
 inventory-hud-plus-by-soulspeed = "client"
 chunky = "server"
+# Server optimizations (dynamic view distance under load, entity activation
+# ranges, lower chunk tick cost). Tune in data/config/servercore/.
+servercore = "server"
+# Quest book add-on (animations, QoL). Needs FTB Quests, under [external].
+certain-questing-additions = "client"
 # These four are datapacks packaged as mods: server-side only, players need nothing.
 call-your-horse = "server"
 ly-clumps = "server"
@@ -90,3 +95,8 @@ shrimps-immersive-interfaces = { side = "client", version = "0.8.2" }
 # CurseForge only. Replaces the inventory screen, adds backpacks with upgrades.
 # Must be on the server and every client.
 better-inventory-and-backpacks = { side = "both", version = "1.5.0", url = "https://mediafilez.forgecdn.net/files/9185/436/betterinventory-fabric-1.21.1-1.5.0.jar" }
+# FTB Quests and the two FTB libraries it requires; FTB left Modrinth.
+# The quest book starts empty: an op writes quests in-game (edit mode).
+ftb-library = { side = "both", version = "2101.1.37", url = "https://mediafilez.forgecdn.net/files/9008/90/ftb-library-fabric-2101.1.37.jar" }
+ftb-teams = { side = "both", version = "2101.1.11", url = "https://mediafilez.forgecdn.net/files/8724/781/ftb-teams-fabric-2101.1.11.jar" }
+ftb-quests = { side = "both", version = "2101.1.36", url = "https://mediafilez.forgecdn.net/files/8885/16/ftb-quests-fabric-2101.1.36.jar" }
