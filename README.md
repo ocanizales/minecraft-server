@@ -314,6 +314,17 @@ docker compose logs -f      # watch it start up
 docker compose down         # stop
 ```
 
+**Auto-pause.** After 30 minutes with nobody online (or 30 minutes after a
+start that nobody joins), the server saves and freezes its Java process. The
+world stops exactly where it was: no day cycle, no crops, no mob spawns.
+Joining, or even opening the multiplayer list, wakes it in a few seconds,
+and so does any `rcon-cli` call. The first join after a long pause may take
+a moment longer, and the log will show one "Can't keep up" line, which is
+harmless. `MAX_TICK_TIME=-1` is required, otherwise the watchdog reads the
+pause as one very long tick and kills the server. To keep it awake (for
+example during a Chunky pre-generation), `touch data/.skip-pause`; delete the
+file to turn pausing back on.
+
 ## Changing the mod list
 
 `pack/mods.toml` is the only list. Each mod is marked `both`, `server` or

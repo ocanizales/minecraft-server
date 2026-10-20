@@ -92,5 +92,17 @@ services:
       ENABLE_RCON: "true"
       RCON_PASSWORD: "${RCON_PASSWORD:?set RCON_PASSWORD in .env}"
 
+      # --- auto-pause ---
+      # Freeze the server (SIGSTOP, after a save) once nobody has been on for
+      # 30 minutes, also 30 minutes after a start with nobody joining. The
+      # world doesn't tick while paused. Any connection to 25565 (a join or
+      # a server-list ping) or an rcon-cli call wakes it in a few seconds.
+      # The watchdog must be off (-1) or waking reads as a 30-minute tick
+      # and kills the server; the image only sets this too late, so it's here.
+      ENABLE_AUTOPAUSE: "TRUE"
+      MAX_TICK_TIME: "-1"
+      AUTOPAUSE_TIMEOUT_EST: "1800"
+      AUTOPAUSE_TIMEOUT_INIT: "1800"
+
       UID: "1000"
       GID: "1000"
