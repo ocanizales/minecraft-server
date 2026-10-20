@@ -42,6 +42,9 @@ These run on the server, set in `MODRINTH_PROJECTS` in `docker-compose.yml`.
 | [ServerCore](https://modrinth.com/mod/servercore) | Server optimizations: lowers view distance under load, slows ticking of far-away mobs, cheaper chunk ticks |
 | [FTB Quests](https://www.curseforge.com/minecraft/mc-mods/ftb-quests-fabric) | Quest book. Comes empty; quests are written in-game by an op. Needs FTB Library and FTB Teams. CurseForge only |
 | [Universal Graves](https://modrinth.com/mod/universal-graves) | When you die your items go into a protected grave at the spot instead of spilling. Server-only (pulls in Polymer), nothing to install |
+| [Regions Unexplored](https://modrinth.com/mod/regions-unexplored) | ~50 new biomes, through TerraBlender like Tensura's own |
+| [Tectonic](https://modrinth.com/mod/tectonic) | Bigger terrain: real mountains, deep valleys, wider rivers. Server-only |
+| [Jade](https://modrinth.com/mod/jade) | Server side of Jade: sends container and mob details to the tooltip |
 | [Chunky](https://modrinth.com/mod/chunky) | Pre-generates the world so exploring doesn't spike the CPU (see below) |
 | [Tree Harvester](https://modrinth.com/mod/tree-harvester) | Chop one log with an axe and the whole tree (or huge mushroom) comes down, with fast leaf decay and sapling replanting |
 | [AppleSkin](https://modrinth.com/mod/appleskin) | Sends real saturation values to clients so the HUD is accurate |
@@ -102,6 +105,10 @@ server.
 | [AFK Cinematics](https://modrinth.com/mod/afk-cinematics) | No | Camera orbit when idle |
 | [AppleSkin](https://modrinth.com/mod/appleskin) | No | Food and saturation HUD |
 | [Inventory Profiles Next](https://modrinth.com/mod/inventory-profiles-next) | No | Take or put everything in a chest with one click or key, sorting, auto-refill. Needs libIPN + Fabric Language Kotlin |
+| [Regions Unexplored](https://modrinth.com/mod/regions-unexplored) | **Yes** | Biome blocks and trees; must match the server |
+| [Jade](https://modrinth.com/mod/jade) | No | Tooltip at the top of the screen: what you're looking at, its health, which mod |
+| [Detail Armor Bar](https://modrinth.com/mod/detail-armor-bar-reconstructed) | No | Armor bar shows each piece's material and enchantments |
+| [Shiny Hearts](https://modrinth.com/resourcepack/shiny-hearts) | No | Resource pack: restyled hearts, hunger and armor icons. Turn it on under Options → Resource Packs |
 | [Mouse Tweaks](https://modrinth.com/mod/mouse-tweaks) | No | Drag over slots to move or split stacks, scroll to move items |
 | [Inventory HUD+](https://modrinth.com/mod/inventory-hud-plus-by-soulspeed) | No | Armor and tool durability on screen |
 | [Fresh Animations](https://modrinth.com/resourcepack/fresh-animations) | No | Resource pack: animated vanilla mobs (blinking, breathing, smoother movement). Needs EMF + ETF (included). Turn it on under Options → Resource Packs |
@@ -228,6 +235,11 @@ are **NeoForge-only**, so they can't run on this Fabric server:
 - **Immersive Interfaces** is a beta resource pack (0.8.2) that covers
   1.21.1 through built-in overlays. It retextures vanilla screens, so Better
   Inventory's own inventory screen may not match it.
+- **Progression is tuned faster** (`pack/tensura_tuning.py`, about 2x): 2%
+  of a kill's EP absorbed instead of 1% (max 15% instead of 10%), less EP
+  lost on weaker kills, faster ability learning and mastery, two starting
+  skills instead of one, and Fire Elemental Cores charge a Kiln twice as
+  long. `--defaults` puts Tensura's values back; restart after either.
 - **Default game settings:** the profile ships `options.txt` with GUI scale
   2, fullscreen on and music at 10%. Only those three lines; everything
   else stays Minecraft's default. The Modrinth App's game-settings sync

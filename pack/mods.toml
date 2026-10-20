@@ -40,11 +40,20 @@ manascore = "both"
 
 minecraft-comes-alive-reborn = "both"
 
+# --- world generation (new chunks only) ---
+# Regions Unexplored: ~50 biomes through TerraBlender, the same system Tensura
+# uses (Kesselot's TenSura modpack ships it). Tectonic: bigger terrain shapes.
+regions-unexplored = "both"
+tectonic = "server"
+
 # --- gameplay ---
 veinminer = "both"
 veinminer-client = "client"
 tree-harvester = "server"
 appleskin = "both"
+# Shows what you're looking at; the server side adds container/mob details.
+jade = "both"
+detail-armor-bar-reconstructed = "client"
 inventory-hud-plus-by-soulspeed = "client"
 # Take/put everything in a chest with one click or key; sorting, auto-refill.
 inventory-profiles-next = "client"
@@ -100,6 +109,8 @@ shrimps-immersive-interfaces = { side = "client", version = "0.8.2" }
 # Animated mobs (resource pack; turn it on under Options -> Resource Packs).
 # Needs Entity Model Features + Entity Texture Features to do anything.
 fresh-animations = "client"
+# Restyled hearts, hunger and armor icons (resource pack).
+shiny-hearts = "client"
 entity-model-features = "client"
 entitytexturefeatures = "client"
 
