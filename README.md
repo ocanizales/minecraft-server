@@ -182,6 +182,13 @@ are **NeoForge-only**, so they can't run on this Fabric server:
   `docker exec minecraft rcon-cli chunky radius 2000` and then
   `docker exec minecraft rcon-cli chunky start`. It can be paused and resumed,
   and the size can be changed.
+- **VeinMiner groups** (`pack/server-config/veinminer-groups.json`, live copy
+  in `data/config/Veinminer/groups.json`, apply with
+  `docker exec minecraft rcon-cli "veinminer reload"`): ores plus
+  glowstone, amethyst and obsidian with a pickaxe; gravel, sand, clay, mud,
+  soul sand/soil and snow with a shovel; leaves, wart blocks and
+  shroomlight with a hoe. Logs are left to Tree Harvester. Hold the
+  VeinMiner key while mining (up to 100 blocks, correct tool only).
 - **Tree Harvester + VeinMiner:** VeinMiner can also break whole veins of
   logs. If both would trigger on the same tree, turn logs off in VeinMiner.
 - **Shader packs:** the profile has three, Eclipse, Complementary Reimagined

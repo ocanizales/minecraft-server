@@ -1,0 +1,78 @@
+[
+    {
+        "name": "Ores",
+        "blocks": [
+            "#c:ores",
+            "minecraft:glowstone",
+            "minecraft:amethyst_block",
+            "minecraft:obsidian"
+        ],
+        "tools": [
+            "#minecraft:pickaxes"
+        ],
+        "override": {
+            "cooldown": null,
+            "mustSneak": null,
+            "delay": null,
+            "maxChain": null,
+            "needCorrectTool": null,
+            "searchRadius": null,
+            "permissionRestricted": null,
+            "decreaseDurability": null,
+            "hungerPerBlock": null,
+            "miningSpeedModifier": null
+        }
+    },
+    {
+        "name": "Soft blocks",
+        "blocks": [
+            "minecraft:gravel",
+            "minecraft:clay",
+            "minecraft:sand",
+            "minecraft:red_sand",
+            "minecraft:soul_sand",
+            "minecraft:soul_soil",
+            "minecraft:mud",
+            "minecraft:snow_block",
+            "minecraft:powder_snow"
+        ],
+        "tools": [
+            "#minecraft:shovels"
+        ],
+        "override": {
+            "cooldown": null,
+            "mustSneak": null,
+            "delay": null,
+            "maxChain": null,
+            "needCorrectTool": null,
+            "searchRadius": null,
+            "permissionRestricted": null,
+            "decreaseDurability": null,
+            "hungerPerBlock": null,
+            "miningSpeedModifier": null
+        }
+    },
+    {
+        "name": "Leaves and plants",
+        "blocks": [
+            "#minecraft:leaves",
+            "#minecraft:wart_blocks",
+            "minecraft:shroomlight"
+        ],
+        "tools": [
+            "#minecraft:hoes"
+        ],
+        "override": {
+            "cooldown": null,
+            "mustSneak": null,
+            "delay": null,
+            "maxChain": null,
+            "needCorrectTool": null,
+            "searchRadius": null,
+            "permissionRestricted": null,
+            "decreaseDurability": null,
+            "hungerPerBlock": null,
+            "miningSpeedModifier": null
+        }
+    }
+]
