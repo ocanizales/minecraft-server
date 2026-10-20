@@ -199,6 +199,15 @@ are **NeoForge-only**, so they can't run on this Fabric server:
   Reserved), handled the same way as Better Inventory. The quest book starts
   empty: an op opens it and turns on edit mode to write chapters and quests.
   They're saved in `data/config/ftbquests/`.
+  The book comes with one chapter, **Tensura Milestones** (51 quests): the
+  EP rank ladder from D to Special S Class, race evolution and awakening,
+  abilities, taming and naming, the metal tiers up to Hihi'irokane, the
+  Labyrinth and Hell, and the bosses (Tensura's and Not Enough Bosses').
+  Each quest is one of Tensura's own advancements, so it completes by
+  itself, progress from before the chapter existed included, and rewards
+  XP levels. `pack/quests/tensura_milestones.py` wrote it; after the first
+  load the in-game editor owns it, and the script won't overwrite it
+  without `--force`.
 - **ServerCore:** can lower view distance and slow far-away mobs when the
   server is busy. If Tensura mobs or MCA villagers act frozen at a distance,
   raise the activation ranges in `data/config/servercore/`.
