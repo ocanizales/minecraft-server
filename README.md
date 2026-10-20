@@ -245,6 +245,13 @@ are **NeoForge-only**, so they can't run on this Fabric server:
   (or `race`, `skill`, `awakening`, `statistic`). Inventory and the world
   are untouched. The in-game Character Reset Scroll does the same, but can
   carry a penalty under the `resetIncompletePenalty` gamerule.
+- **Fresh start for one player** (new spawn, empty inventory, no
+  advancements, quests or MCA appearance): with the server **stopped**, move
+  the player's files out of `data/world/`: `playerdata/<uuid>.dat`,
+  `advancements/<uuid>.json`, `stats/<uuid>.json`,
+  `ftbquests/<uuid>.snbt`, `ftbteams/player/<uuid>.snbt` and
+  `data/mca_player_<uuid>.dat`. Stopped matters: FTB and MCA write their
+  copy back on shutdown.
 - **Default game settings:** the profile ships `options.txt` with GUI scale
   2, fullscreen on and music at 10%. Only those three lines; everything
   else stays Minecraft's default. The Modrinth App's game-settings sync
