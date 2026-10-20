@@ -81,6 +81,7 @@ particle-rain = "client"
 not-enough-animations = "client"
 afk-cinematics = "client"
 visuality = "client"
+cameraoverhaul = "client"
 lambdynamiclights = "client"
 xaeros-minimap = "client"
 xaeros-world-map = "client"
@@ -90,6 +91,11 @@ jei = { side = "client", version = "19.51.0.418" }
 # Resource pack (players turn it on under Options -> Resource Packs). Beta only;
 # 0.8.2 covers 1.20-26.1 through pack overlays.
 shrimps-immersive-interfaces = { side = "client", version = "0.8.2" }
+# Animated mobs (resource pack; turn it on under Options -> Resource Packs).
+# Needs Entity Model Features + Entity Texture Features to do anything.
+fresh-animations = "client"
+entity-model-features = "client"
+entitytexturefeatures = "client"
 
 [external]
 # CurseForge only. Replaces the inventory screen, adds backpacks with upgrades.

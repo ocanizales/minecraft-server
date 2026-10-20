@@ -101,6 +101,8 @@ server.
 | [AFK Cinematics](https://modrinth.com/mod/afk-cinematics) | No | Camera orbit when idle |
 | [AppleSkin](https://modrinth.com/mod/appleskin) | No | Food and saturation HUD |
 | [Inventory HUD+](https://modrinth.com/mod/inventory-hud-plus-by-soulspeed) | No | Armor and tool durability on screen |
+| [Fresh Animations](https://modrinth.com/resourcepack/fresh-animations) | No | Resource pack: animated vanilla mobs (blinking, breathing, smoother movement). Needs EMF + ETF (included). Turn it on under Options → Resource Packs |
+| [Camera Overhaul](https://modrinth.com/mod/cameraoverhaul) | No | Camera tilts and sways with movement and turning |
 | [Immersive Interfaces](https://modrinth.com/resourcepack/shrimps-immersive-interfaces) | No | Resource pack: redrawn GUI textures. Turn it on under Options → Resource Packs |
 | [Xaero's Minimap](https://modrinth.com/mod/xaeros-minimap) | No | |
 | [Xaero's World Map](https://modrinth.com/mod/xaeros-world-map) | No | |
@@ -110,7 +112,8 @@ server.
 | [LambDynamicLights](https://modrinth.com/mod/lambdynamiclights) | No | Torches and other light sources light up the area while held or dropped |
 
 Also in the profile as dependencies: Cloth Config (Falling Leaves,
-Visuality), Placeholder API (Mod Menu),
+Visuality, Camera Overhaul), Placeholder API (Mod Menu),
+Entity Model Features + Entity Texture Features (Fresh Animations),
 Fabric Language Kotlin (VeinMiner) and the five Tensura libraries.
 
 ## Why 1.21.1
