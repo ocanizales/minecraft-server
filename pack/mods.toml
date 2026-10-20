@@ -13,6 +13,9 @@
 #          doesn't need them (the jar's own depends are still checked).
 # Dependencies a mod declares on Modrinth are added automatically.
 
+# [external]: mods not on Modrinth. url = direct download, version = label.
+#          The profile downloads from that URL; nothing is re-hosted.
+
 minecraft = "1.21.1"
 fabric_loader = "0.19.5"
 
@@ -42,6 +45,7 @@ veinminer = "both"
 veinminer-client = "client"
 tree-harvester = "server"
 appleskin = "both"
+inventory-hud-plus-by-soulspeed = "client"
 chunky = "server"
 # These four are datapacks packaged as mods: server-side only, players need nothing.
 call-your-horse = "server"
@@ -78,3 +82,11 @@ xaeros-world-map = "client"
 # JEI 19.64+ requires mezz's config library, which is beta-only; stay on the
 # build players already had.
 jei = { side = "client", version = "19.51.0.418" }
+# Resource pack (players turn it on under Options -> Resource Packs). Beta only;
+# 0.8.2 covers 1.20-26.1 through pack overlays.
+shrimps-immersive-interfaces = { side = "client", version = "0.8.2" }
+
+[external]
+# CurseForge only. Replaces the inventory screen, adds backpacks with upgrades.
+# Must be on the server and every client.
+better-inventory-and-backpacks = { side = "both", version = "1.5.0", url = "https://mediafilez.forgecdn.net/files/9185/436/betterinventory-fabric-1.21.1-1.5.0.jar" }

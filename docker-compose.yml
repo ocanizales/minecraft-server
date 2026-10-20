@@ -47,6 +47,10 @@ services:
         terrablender:XNtIBXyQ
         tree-harvester:ejhqrWH2
         veinminer:XJrQXP5u
+      # Server mods that aren't on Modrinth ([external] in mods.toml), by URL.
+      # When one is updated, delete its old jar from data/mods by hand.
+      MODS: |-
+        https://mediafilez.forgecdn.net/files/9185/436/betterinventory-fabric-1.21.1-1.5.0.jar
       MODRINTH_DOWNLOAD_DEPENDENCIES: "none"
       # Every line is pinned, but TerraBlender's only 1.21.1 builds are
       # marked beta, so the type filter must not reject them.

@@ -43,6 +43,7 @@ These run on the server, set in `MODRINTH_PROJECTS` in `docker-compose.yml`.
 | [Tree Harvester](https://modrinth.com/mod/tree-harvester) | Chop one log with an axe and the whole tree (or huge mushroom) comes down, with fast leaf decay and sapling replanting |
 | [AppleSkin](https://modrinth.com/mod/appleskin) | Sends real saturation values to clients so the HUD is accurate |
 | [VeinMiner](https://modrinth.com/mod/veinminer) | The vein-mining itself happens on the server |
+| [Better Inventory and Backpacks](https://www.curseforge.com/minecraft/mc-mods/better-inventory-and-backpacks) | New inventory screen, wearable backpacks with upgrades (magnet, auto-feed, hotbar refill), sorting, bigger stacks in backpack storage. CurseForge only, see notes |
 | [Call Your Horse](https://modrinth.com/mod/call-your-horse) | Blow a goat horn to whistle your horse over to you |
 | [Clumps](https://modrinth.com/mod/ly-clumps) | Merges nearby experience orbs into one and picks them up instantly, which also cuts lag |
 | [Day Counter](https://modrinth.com/mod/daycounter) | Shows the current day above the hotbar |
@@ -79,6 +80,7 @@ server.
 | [Tensura: Better Subordinates](https://modrinth.com/mod/tensura-better-subordinates) | **Yes** | |
 | [MCA Reborn](https://modrinth.com/mod/minecraft-comes-alive-reborn) | **Yes** | |
 | [VeinMiner](https://modrinth.com/mod/veinminer) | **Yes** | Must match the server |
+| [Better Inventory and Backpacks](https://www.curseforge.com/minecraft/mc-mods/better-inventory-and-backpacks) | **Yes** | Must match the server |
 | [VeinMiner Hotkey](https://modrinth.com/mod/veinminer-client) | **Yes** | Hold a key to vein-mine; needs VeinMiner + Fabric Language Kotlin |
 | [Tensura Voice](https://modrinth.com/mod/tensura-voice) | No | Voice of the World animations and sounds |
 | [Sodium](https://modrinth.com/mod/sodium) | No | Rendering performance |
@@ -94,6 +96,8 @@ server.
 | [Not Enough Animations](https://modrinth.com/mod/not-enough-animations) | No | Third-person animations |
 | [AFK Cinematics](https://modrinth.com/mod/afk-cinematics) | No | Camera orbit when idle |
 | [AppleSkin](https://modrinth.com/mod/appleskin) | No | Food and saturation HUD |
+| [Inventory HUD+](https://modrinth.com/mod/inventory-hud-plus-by-soulspeed) | No | Armor and tool durability on screen |
+| [Immersive Interfaces](https://modrinth.com/resourcepack/shrimps-immersive-interfaces) | No | Resource pack: redrawn GUI textures. Turn it on under Options → Resource Packs |
 | [Xaero's Minimap](https://modrinth.com/mod/xaeros-minimap) | No | |
 | [Xaero's World Map](https://modrinth.com/mod/xaeros-world-map) | No | |
 | [Just Enough Items](https://modrinth.com/mod/jei) | No | Recipe viewer |
@@ -172,6 +176,15 @@ are **NeoForge-only**, so they can't run on this Fabric server:
 - **Cinematic AFK:** two similar mods exist, [AFK Cinematics](https://modrinth.com/mod/afk-cinematics)
   (listed above) and [Ji AFK Cinematic](https://modrinth.com/mod/ji-afk-cinematic).
   Use one, not both.
+- **Better Inventory and Backpacks** is only on CurseForge. It isn't
+  re-hosted here: the server downloads it through `MODS` in
+  `docker-compose.yml`, and the profile points the Modrinth App at
+  CurseForge's own download link. It changes how item stacks are saved, so
+  removing it later can shrink or lose items in backpacks; the world was
+  backed up before it was added.
+- **Immersive Interfaces** is a beta resource pack (0.8.2) that covers
+  1.21.1 through built-in overlays. It retextures vanilla screens, so Better
+  Inventory's own inventory screen may not match it.
 - **Tensura HUD:** Tensura hides the normal health and hunger bars and
   draws its own panel in the top-left (health, spiritual HP, magicules,
   aura). The profile ships `config/tensura/client/hud_config.toml` with the

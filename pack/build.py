@@ -9,6 +9,10 @@
 Every jar's fabric.mod.json `depends` is checked against the whole set,
 because some mods (Tensura) need libraries their Modrinth pages never declare.
 
+Mods that aren't on Modrinth go under [external] with a direct download URL:
+the server gets them through MODS in docker-compose.yml and the profile
+downloads them from that URL, so nothing is re-hosted here.
+
 Usage: python3 pack/build.py <pack-version>     e.g. 2026.10.13
 Stdlib only.
 """
@@ -28,6 +32,9 @@ API = "https://api.modrinth.com/v2"
 UA = "ocanizales/minecraft-server (github.com/ocanizales/minecraft-server)"
 CACHE = ROOT / "dist" / "cache"
 PACK_NAME = "bullet's server"
+# Where each Modrinth project type is looked up and installed.
+LOADER = {"shader": "iris", "resourcepack": "minecraft"}
+FOLDER = {"shader": "shaderpacks", "resourcepack": "resourcepacks"}
 # Provided by the loader or the game itself, never by a mod on the list.
 BUILTIN = {"minecraft", "java", "fabricloader", "fabric", "mixinextras"}
 
@@ -39,7 +46,7 @@ def get(url, raw=False):
 
 
 def pick_version(slug, mc, ptype, pinned):
-    loader = "iris" if ptype == "shader" else "fabric"
+    loader = LOADER.get(ptype, "fabric")
     query = urllib.parse.urlencode({"loaders": f'["{loader}"]', "game_versions": f'["{mc}"]'})
     versions = get(f"{API}/project/{slug}/version?{query}")
     if pinned:
@@ -124,6 +131,31 @@ def resolve(cfg):
     return resolved
 
 
+def add_external(cfg, resolved):
+    """[external] mods: fetched from their own URL, hashed here."""
+    for slug, spec in cfg.get("external", {}).items():
+        name = urllib.parse.unquote(spec["url"].rsplit("/", 1)[-1])
+        path = CACHE / name
+        if not path.exists():
+            CACHE.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(get(spec["url"], raw=True))
+        data = path.read_bytes()
+        file = {
+            "filename": name,
+            "url": spec["url"],
+            "hashes": {"sha1": hashlib.sha1(data).hexdigest(), "sha512": hashlib.sha512(data).hexdigest()},
+            "size": len(data),
+            "primary": True,
+        }
+        resolved[f"external:{slug}"] = {
+            "slug": slug,
+            "type": "mod",
+            "external": True,
+            "version": {"id": None, "version_number": spec["version"], "files": [file], "dependencies": []},
+            "sides": {spec["side"]},
+        }
+
+
 def check_depends(resolved):
     provided, metas = set(BUILTIN), []
     for entry in resolved.values():
@@ -163,16 +195,17 @@ def write_compose(cfg, resolved):
         text, n = re.subn(rf'(?m)^(      {key}: ).*$', rf'\g<1>"{value}"', text)
         if n != 1:
             sys.exit(f"{key} not found in docker-compose.yml")
-    lines = sorted(
-        f"        {e['slug']}:{e['version']['id']}"
-        for e in resolved.values()
-        if on_server(e) and e["type"] == "mod"
-    )
-    block = "      MODRINTH_PROJECTS: |-\n" + "\n".join(lines) + "\n"
-    new, n = re.subn(r"      MODRINTH_PROJECTS: \|-\n(?:        .*\n)+", block, text)
-    if n != 1:
-        sys.exit("MODRINTH_PROJECTS block not found in docker-compose.yml")
-    path.write_text(new)
+    server = [e for e in resolved.values() if on_server(e) and e["type"] == "mod"]
+    blocks = {
+        "MODRINTH_PROJECTS": sorted(f"{e['slug']}:{e['version']['id']}" for e in server if not e.get("external")),
+        "MODS": sorted(primary(e["version"])["url"] for e in server if e.get("external")),
+    }
+    for key, lines in blocks.items():
+        block = f"      {key}: |-\n" + "".join(f"        {line}\n" for line in lines)
+        text, n = re.subn(rf"      {key}: \|-\n(?:        .*\n)+", block, text)
+        if n != 1:
+            sys.exit(f"{key} block not found in docker-compose.yml")
+    path.write_text(text)
 
 
 def write_mrpack(cfg, resolved, pack_version):
@@ -181,9 +214,11 @@ def write_mrpack(cfg, resolved, pack_version):
         if not on_client(e):
             continue
         file = primary(e["version"])
-        folder = "shaderpacks" if e["type"] == "shader" else "mods"
+        folder = FOLDER.get(e["type"], "mods")
+        # Some pack files carry Minecraft colour codes (§6...) in their names.
+        filename = re.sub("§.", "", file["filename"])
         files.append({
-            "path": f"{folder}/{file['filename']}",
+            "path": f"{folder}/{filename}",
             "hashes": {"sha1": file["hashes"]["sha1"], "sha512": file["hashes"]["sha512"]},
             "env": {"client": "required", "server": "required" if on_server(e) else "unsupported"},
             "downloads": [file["url"]],
@@ -216,6 +251,7 @@ def main():
         sys.exit(__doc__)
     cfg = tomllib.loads((ROOT / "pack" / "mods.toml").read_text())
     resolved = resolve(cfg)
+    add_external(cfg, resolved)
     check_depends(resolved)
     write_compose(cfg, resolved)
     out, count = write_mrpack(cfg, resolved, sys.argv[1])
