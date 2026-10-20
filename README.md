@@ -100,6 +100,7 @@ server.
 | [Not Enough Animations](https://modrinth.com/mod/not-enough-animations) | No | Third-person animations |
 | [AFK Cinematics](https://modrinth.com/mod/afk-cinematics) | No | Camera orbit when idle |
 | [AppleSkin](https://modrinth.com/mod/appleskin) | No | Food and saturation HUD |
+| [Inventory Profiles Next](https://modrinth.com/mod/inventory-profiles-next) | No | Take or put everything in a chest with one click or key, sorting, auto-refill. Needs libIPN + Fabric Language Kotlin |
 | [Inventory HUD+](https://modrinth.com/mod/inventory-hud-plus-by-soulspeed) | No | Armor and tool durability on screen |
 | [Fresh Animations](https://modrinth.com/resourcepack/fresh-animations) | No | Resource pack: animated vanilla mobs (blinking, breathing, smoother movement). Needs EMF + ETF (included). Turn it on under Options → Resource Packs |
 | [Camera Overhaul](https://modrinth.com/mod/cameraoverhaul) | No | Camera tilts and sways with movement and turning |
@@ -285,5 +286,13 @@ gh release create pack-2026.10.20 dist/bullets-server.mrpack --title "Player pro
 
 The download button always points at the newest release, so the asset name
 must stay `bullets-server.mrpack`.
+
+Then tell whoever is online, in the game chat:
+
+```sh
+python3 pack/announce.py profile "Added <mod> (<what it does>)"   # client mods: adds a clickable download link
+python3 pack/announce.py server  "Added <mod>"                     # server-only mods
+python3 pack/announce.py restart "Restarting in 30 seconds to add <mod>"
+```
 
 `data/` holds the world and runtime files and is not committed.
