@@ -2,3 +2,4 @@ data/
 .env
 dist/
 backups/
+__pycache__/
