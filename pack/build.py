@@ -4,7 +4,7 @@
 - rewrite MODRINTH_PROJECTS in docker-compose.yml with exact version IDs, so
   the server runs the same builds as the player profile;
 - build dist/bullets-server.mrpack, the profile players import into the
-  Modrinth App.
+  Modrinth App, with pack/overrides/ (default client configs) inside it.
 
 Every jar's fabric.mod.json `depends` is checked against the whole set,
 because some mods (Tensura) need libraries their Modrinth pages never declare.
@@ -202,6 +202,12 @@ def write_mrpack(cfg, resolved, pack_version):
     out.parent.mkdir(exist_ok=True)
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
         z.writestr("modrinth.index.json", json.dumps(index, indent=2))
+        # pack/overrides/ (default client configs) is unpacked into the
+        # player's instance when the profile is imported.
+        overrides = ROOT / "pack" / "overrides"
+        for f in sorted(overrides.rglob("*")):
+            if f.is_file():
+                z.write(f, f"overrides/{f.relative_to(overrides)}")
     return out, len(files)
 
 

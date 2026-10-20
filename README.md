@@ -172,6 +172,14 @@ are **NeoForge-only**, so they can't run on this Fabric server:
 - **Cinematic AFK:** two similar mods exist, [AFK Cinematics](https://modrinth.com/mod/afk-cinematics)
   (listed above) and [Ji AFK Cinematic](https://modrinth.com/mod/ji-afk-cinematic).
   Use one, not both.
+- **Tensura HUD:** Tensura hides the normal health and hunger bars and
+  draws its own panel in the top-left (health, spiritual HP, magicules,
+  aura). The profile ships `config/tensura/client/hud_config.toml` with the
+  vanilla HUD back on and Tensura's top-left bars, food, armor and air turned
+  off. Magicules and aura still show in the Status Menu. To get the panel
+  back: Status Menu → Settings → HUD → Status Bars → Render Status Bars.
+  The file only applies when the profile is imported; it doesn't touch an
+  existing install.
 - **Particle Rain:** none of the other mods add weather particles, so it
   doesn't overlap with anything.
 
@@ -198,7 +206,10 @@ Client:
   more video settings.
 - [Jade](https://modrinth.com/mod/jade): shows what you're looking at.
 - [Mouse Tweaks](https://modrinth.com/mod/mouse-tweaks): faster inventory
-  handling.
+  handling (drag to move or split stacks, scroll to move items).
+- [Inventory Profiles Next](https://modrinth.com/mod/inventory-profiles-next):
+  sort buttons, locked slots, auto-refill of tools and blocks; heavier, adds
+  buttons to every container screen.
 - [Controlling](https://modrinth.com/mod/controlling): replacement for
   Keybind Atlas (needs Searchables).
 
