@@ -240,6 +240,11 @@ are **NeoForge-only**, so they can't run on this Fabric server:
   lost on weaker kills, faster ability learning and mastery, two starting
   skills instead of one, and Fire Elemental Cores charge a Kiln twice as
   long. `--defaults` puts Tensura's values back; restart after either.
+- **Redoing a Tensura character:** an op can run
+  `docker exec minecraft rcon-cli "tensura reset <player> everything"`
+  (or `race`, `skill`, `awakening`, `statistic`). Inventory and the world
+  are untouched. The in-game Character Reset Scroll does the same, but can
+  carry a penalty under the `resetIncompletePenalty` gamerule.
 - **Default game settings:** the profile ships `options.txt` with GUI scale
   2, fullscreen on and music at 10%. Only those three lines; everything
   else stays Minecraft's default. The Modrinth App's game-settings sync
