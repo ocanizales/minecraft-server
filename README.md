@@ -101,6 +101,7 @@ server.
 | [AFK Cinematics](https://modrinth.com/mod/afk-cinematics) | No | Camera orbit when idle |
 | [AppleSkin](https://modrinth.com/mod/appleskin) | No | Food and saturation HUD |
 | [Inventory Profiles Next](https://modrinth.com/mod/inventory-profiles-next) | No | Take or put everything in a chest with one click or key, sorting, auto-refill. Needs libIPN + Fabric Language Kotlin |
+| [Mouse Tweaks](https://modrinth.com/mod/mouse-tweaks) | No | Drag over slots to move or split stacks, scroll to move items |
 | [Inventory HUD+](https://modrinth.com/mod/inventory-hud-plus-by-soulspeed) | No | Armor and tool durability on screen |
 | [Fresh Animations](https://modrinth.com/resourcepack/fresh-animations) | No | Resource pack: animated vanilla mobs (blinking, breathing, smoother movement). Needs EMF + ETF (included). Turn it on under Options → Resource Packs |
 | [Camera Overhaul](https://modrinth.com/mod/cameraoverhaul) | No | Camera tilts and sways with movement and turning |
@@ -212,6 +213,12 @@ are **NeoForge-only**, so they can't run on this Fabric server:
 - **ServerCore:** can lower view distance and slow far-away mobs when the
   server is busy. If Tensura mobs or MCA villagers act frozen at a distance,
   raise the activation ranges in `data/config/servercore/`.
+- **Camera Overhaul** tilts the camera when strafing and turning. If that
+  feels like it fights your movement: Mods → Camera Overhaul → set
+  Strafing Roll Factor (and Mouselook Roll) to 0, or untick Enable.
+- **Default keys:** Tensura takes Z, X, C (ability slots), V (dodge), B
+  (Status Menu), N (naming), R (race ability) and Left Alt (next mode);
+  Inventory HUD+ takes H and J. Nothing in the pack binds A, D or T.
 - **Immersive Interfaces** is a beta resource pack (0.8.2) that covers
   1.21.1 through built-in overlays. It retextures vanilla screens, so Better
   Inventory's own inventory screen may not match it.

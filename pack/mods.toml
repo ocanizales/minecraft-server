@@ -48,6 +48,8 @@ appleskin = "both"
 inventory-hud-plus-by-soulspeed = "client"
 # Take/put everything in a chest with one click or key; sorting, auto-refill.
 inventory-profiles-next = "client"
+# Drag-to-move/split stacks and scroll to move items.
+mouse-tweaks = "client"
 chunky = "server"
 # Server optimizations (dynamic view distance under load, entity activation
 # ranges, lower chunk tick cost). Tune in data/config/servercore/.
