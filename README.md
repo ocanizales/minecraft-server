@@ -100,10 +100,9 @@ server.
 | [Dynamic FPS](https://modrinth.com/mod/dynamic-fps) | No | Lowers frame rate and volume when the game is in the background, idle or on battery |
 | [Visuality](https://modrinth.com/mod/visuality) | No | Extra particles: mob hits, slime blobs, crystal sparkles, ambient effects; needs Cloth Config |
 | [LambDynamicLights](https://modrinth.com/mod/lambdynamiclights) | No | Torches and other light sources light up the area while held or dropped |
-| [Spatial GUI](https://modrinth.com/mod/spatial-gui) | No | Draws inventory and container screens as a 3D panel instead of a flat overlay; needs Mod Menu + Cloth Config |
 
 Also in the profile as dependencies: Cloth Config (Falling Leaves,
-Visuality, Spatial GUI), YACL (Spatial GUI), Placeholder API (Mod Menu),
+Visuality), Placeholder API (Mod Menu),
 Fabric Language Kotlin (VeinMiner) and the five Tensura libraries.
 
 ## Why 1.21.1
@@ -135,6 +134,8 @@ are **NeoForge-only**, so they can't run on this Fabric server:
   which adds search to the controls screen.
 - **ModernFix:** dropped. It was built for large Forge modpacks and does
   little for a Fabric pack.
+- **Spatial GUI:** removed 2026-10-20; bullet didn't like the 3D inventory
+  screens.
 - **Voxy:** its first build is for 1.21.9. Nothing for 1.21.1.
 - **Euphoria (modpack):** only made for 26.1.2, and a modpack can't go
   inside another modpack anyway. The shader add-on

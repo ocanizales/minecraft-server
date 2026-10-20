@@ -73,7 +73,6 @@ not-enough-animations = "client"
 afk-cinematics = "client"
 visuality = "client"
 lambdynamiclights = "client"
-spatial-gui = "client"
 xaeros-minimap = "client"
 xaeros-world-map = "client"
 # JEI 19.64+ requires mezz's config library, which is beta-only; stay on the
