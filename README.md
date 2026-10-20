@@ -228,6 +228,10 @@ are **NeoForge-only**, so they can't run on this Fabric server:
 - **Immersive Interfaces** is a beta resource pack (0.8.2) that covers
   1.21.1 through built-in overlays. It retextures vanilla screens, so Better
   Inventory's own inventory screen may not match it.
+- **Default game settings:** the profile ships `options.txt` with GUI scale
+  2, fullscreen on and music at 10%. Only those three lines; everything
+  else stays Minecraft's default. The Modrinth App's game-settings sync
+  remembers what the pack set, so changing them yourself sticks.
 - **Tensura HUD:** Tensura hides the normal health and hunger bars and
   draws its own panel in the top-left (health, spiritual HP, magicules,
   aura). The profile ships `config/tensura/client/hud_config.toml` with the

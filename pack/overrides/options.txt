@@ -1,0 +1,4 @@
+version:3955
+guiScale:2
+fullscreen:true
+soundCategory_music:0.1
